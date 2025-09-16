@@ -1,4 +1,5 @@
 #include <cmath>
+#include "pipe.h"
 using namespace std
 
 int Pipe::maxId = 0;
