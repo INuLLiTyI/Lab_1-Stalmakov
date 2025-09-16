@@ -27,3 +27,14 @@ void CompressorStation::SetWorkshops(int total, int working) {
     WorkshopsInWork = working;
 }
 void CompressorStation::SetEfficiency(int efficiency) { EfficiencyLevel = efficiency; }
+
+void CompressorStation::StartWorkshop() {
+    if (WorkshopsInWork < AmountOfWorkshops) {
+        WorkshopsInWork++;
+        cout << "Workshop started. Now working: " << WorkshopsInWork << "/" << AmountOfWorkshops << endl;
+    }
+    else {
+        // 4. ОШИБКА: Если все цехи уже работают
+        cout << "All workshops are already working!\n";
+    }
+}
