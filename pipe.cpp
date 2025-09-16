@@ -26,3 +26,18 @@ void Pipe::SetName(const string& name) { Name = name; }
 void Pipe::SetLength(int length) { Length = length; }
 void Pipe::SetDiameter(int diameter) { Diameter = diameter; }
 void Pipe::SetInRepair(bool inRepair) { InRepair = inRepair; }
+
+void Pipe::Edit() {
+    cout << "Edit pipe (current repair status: " << (InRepair ? "in repair" : "working") << "):\n";
+    cout << "Set repair status (0 - working, 1 - in repair): ";
+    int status;
+    cin >> status;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "Invalid input! Status unchanged.\n";
+    }
+    else {
+        InRepair = (status == 1);
+    }
+}
