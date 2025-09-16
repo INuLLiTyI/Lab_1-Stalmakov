@@ -2,7 +2,7 @@
 #include <fstream>
 #include <limits>
 #include "pipe.h"
-#include "CompressorStation.h"
+#include "Compressor_Station.h"
 
 using namespace std;
 
