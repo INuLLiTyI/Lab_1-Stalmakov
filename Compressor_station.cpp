@@ -49,3 +49,11 @@ void CompressorStation::StopWorkshop() {
         cout << "No workshops are working!\n";
     }
 }
+
+void CompressorStation::Print() const {
+    cout << "Compressor Station ID: " << id << endl;
+    cout << "Name: " << Name << endl;
+    cout << "Workshops: " << WorkshopsInWork << "/" << AmountOfWorkshops << " working" << endl;
+    cout << "Efficiency Level: " << EfficiencyLevel << endl;
+    cout << "Utilization: " << GetPercent() << "%" << endl;
+}
