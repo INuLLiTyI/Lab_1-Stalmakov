@@ -38,3 +38,13 @@ void CompressorStation::StartWorkshop() {
         cout << "All workshops are already working!\n";
     }
 }
+
+void CompressorStation::StopWorkshop() {
+    if (WorkshopsInWork > 0) {
+        WorkshopsInWork--;
+        cout << "Workshop stopped. Now working: " << WorkshopsInWork << "/" << AmountOfWorkshops << endl;
+    }
+    else {
+        cout << "No workshops are working!\n";
+    }
+}
