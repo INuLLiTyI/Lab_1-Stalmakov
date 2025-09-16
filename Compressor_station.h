@@ -17,11 +17,23 @@ private:
 	int EfficiencyLevel;
 
 public:
-	CompressorStation();
+    CompressorStation();
 
-	int GetId();
-	static int GetMaxId();
-	std::string GetName();
-	int GetPercent();
+    // Getters
+    int GetId();
+    static int GetMaxId();
+    std::string GetName();
+    int GetPercent();
+
+    void SetName(const std::string& name);
+    void SetWorkshops(int total, int working);
+    void SetEfficiency(int efficiency);
+    void StartWorkshop();
+    void StopWorkshop();
+    void Print() const;
+
+    // Friend functions for I/O
+    friend std::ostream& operator<<(std::ostream& out, const CompressorStation& cs);
+    friend std::istream& operator>>(std::istream& in, CompressorStation& cs);
 
 };
