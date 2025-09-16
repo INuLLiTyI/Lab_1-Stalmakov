@@ -6,7 +6,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-class CompressorStation{
+class CompressorStation {
 
 private:
 	static int maxId;
@@ -24,4 +24,4 @@ public:
 	std::string GetName();
 	int GetPercent();
 
-}
+};

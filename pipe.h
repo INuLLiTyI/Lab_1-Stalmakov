@@ -27,4 +27,5 @@ public:
 	bool GetStatement();
 	int GetDiameter();
 	bool IsConnected();
+
 };
