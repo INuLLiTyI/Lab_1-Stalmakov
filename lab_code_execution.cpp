@@ -4,7 +4,7 @@
 #include "pipe.h"
 #include "CompressorStation.h"
 
-using namespace std
+using namespace std;
 
 void printMenu() {
     cout << "\n=== Pipeline Management System ===\n";
@@ -87,7 +87,7 @@ void addCompressorStation(CompressorStation& cs) {
     cout << "Compressor Station added successfully!\n";
 }
 
-int main() {
+int lab_code_execution() {
     Pipe pipe;
     CompressorStation cs;
     int choice;

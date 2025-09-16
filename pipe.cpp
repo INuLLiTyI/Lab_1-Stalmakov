@@ -1,17 +1,16 @@
 #include <cmath>
 #include "pipe.h"
-using namespace std
+using namespace std;
 
 int Pipe::maxId = 0;
 
 Pipe::Pipe()
 {
-    id = 0;
+    id = ++maxId;
     Name = "None";
     Length = 0;
     Diameter = 0;
-    InRepair = 0;
-
+    InRepair = false;
     CS1 = 0;
     CS2 = 0;
 }

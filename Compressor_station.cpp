@@ -7,7 +7,7 @@ int CompressorStation::maxId = 0;
 
 CompressorStation::CompressorStation()
 {
-    id = 0;
+    id = ++maxId;
     Name = "None";
     AmountOfWorkshops = 0;
     WorkshopsInWork = 0;
