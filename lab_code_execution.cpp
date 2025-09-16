@@ -86,3 +86,107 @@ void addCompressorStation(CompressorStation& cs) {
 
     cout << "Compressor Station added successfully!\n";
 }
+
+int main() {
+    Pipe pipe;
+    CompressorStation cs;
+    int choice;
+
+    while (true) {
+        printMenu();
+
+        if (!(cin >> choice)) {
+            clearInput();
+            cout << "Invalid input! Please enter a number.\n";
+            continue;
+        }
+
+        switch (choice) {
+        case 1: {
+            addPipe(pipe);
+            break;
+        }
+        case 2: {
+            addCompressorStation(cs);
+            break;
+        }
+        case 3: {
+            cout << "\n=== All Objects ===\n";
+            if (pipe.GetName() != "None") {
+                cout << "--- Pipe ---\n";
+                pipe.Print();
+            }
+            else {
+                cout << "No pipe data available.\n";
+            }
+
+            if (cs.GetName() != "None") {
+                cout << "\n--- Compressor Station ---\n";
+                cs.Print();
+            }
+            else {
+                cout << "No compressor station data available.\n";
+            }
+            break;
+        }
+        case 4: {
+            if (pipe.GetName() != "None") {
+                pipe.Edit();
+            }
+            else {
+                cout << "No pipe to edit! Please add a pipe first.\n";
+            }
+            break;
+        }
+        case 5: {
+            if (cs.GetName() != "None") {
+                int action;
+                cout << "1. Start workshop\n2. Stop workshop\nChoose action: ";
+                if (cin >> action) {
+                    if (action == 1) cs.StartWorkshop();
+                    else if (action == 2) cs.StopWorkshop();
+                    else cout << "Invalid action!\n";
+                }
+                else {
+                    clearInput();
+                    cout << "Invalid input!\n";
+                }
+            }
+            else {
+                cout << "No compressor station to edit! Please add a station first.\n";
+            }
+            break;
+        }
+        case 6: {
+            ofstream out("data.txt");
+            if (out) {
+                out << pipe << endl << cs;
+                cout << "Data saved successfully to data.txt!\n";
+            }
+            else {
+                cout << "Error saving data!\n";
+            }
+            break;
+        }
+        case 7: {
+            ifstream in("data.txt");
+            if (in) {
+                in >> pipe >> cs;
+                cout << "Data loaded successfully from data.txt!\n";
+            }
+            else {
+                cout << "Error loading data! File not found.\n";
+            }
+            break;
+        }
+        case 0: {
+            cout << "Exiting program. Goodbye!\n";
+            return 0;
+        }
+        default: {
+            cout << "Invalid choice! Please try again.\n";
+            break;
+        }
+        }
+    }
+}
