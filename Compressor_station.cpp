@@ -34,7 +34,7 @@ void CompressorStation::StartWorkshop() {
         cout << "Workshop started. Now working: " << WorkshopsInWork << "/" << AmountOfWorkshops << endl;
     }
     else {
-        // 4. ОШИБКА: Если все цехи уже работают
+        // Ошибка! Все цехи уже в работе!
         cout << "All workshops are already working!\n";
     }
 }
@@ -45,6 +45,7 @@ void CompressorStation::StopWorkshop() {
         cout << "Workshop stopped. Now working: " << WorkshopsInWork << "/" << AmountOfWorkshops << endl;
     }
     else {
+        // Ошибка! Не одного цеха ни запущено
         cout << "No workshops are working!\n";
     }
 }
