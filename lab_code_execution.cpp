@@ -23,3 +23,32 @@ void clearInput() {
     cin.clear();
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
+
+void addPipe(Pipe& pipe) {
+    cout << "\n=== Add New Pipe ===\n";
+    string name;
+    int length, diameter;
+
+    cout << "Enter pipe name: ";
+    clearInput();
+    getline(cin, name);
+
+    cout << "Enter length (km): ";
+    while (!(cin >> length) || length <= 0) {
+        cout << "Invalid input! Enter positive number: ";
+        clearInput();
+    }
+
+    cout << "Enter diameter (mm): ";
+    while (!(cin >> diameter) || diameter <= 0) {
+        cout << "Invalid input! Enter positive number: ";
+        clearInput();
+    }
+
+    pipe.SetName(name);
+    pipe.SetLength(length);
+    pipe.SetDiameter(diameter);
+    pipe.SetInRepair(false);
+
+    cout << "Pipe added successfully!\n";
+}
