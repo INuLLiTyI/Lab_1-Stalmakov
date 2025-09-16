@@ -52,3 +52,37 @@ void addPipe(Pipe& pipe) {
 
     cout << "Pipe added successfully!\n";
 }
+
+void addCompressorStation(CompressorStation& cs) {
+    cout << "\n=== Add New Compressor Station ===\n";
+    string name;
+    int totalWorkshops, workingWorkshops, efficiency;
+
+    cout << "Enter station name: ";
+    clearInput();
+    getline(cin, name);
+
+    cout << "Enter total number of workshops: ";
+    while (!(cin >> totalWorkshops) || totalWorkshops <= 0) {
+        cout << "Invalid input! Enter positive number: ";
+        clearInput();
+    }
+
+    cout << "Enter number of working workshops: ";
+    while (!(cin >> workingWorkshops) || workingWorkshops < 0 || workingWorkshops > totalWorkshops) {
+        cout << "Invalid input! Enter number between 0 and " << totalWorkshops << ": ";
+        clearInput();
+    }
+
+    cout << "Enter efficiency level: ";
+    while (!(cin >> efficiency) || efficiency <= 0) {
+        cout << "Invalid input! Enter positive number: ";
+        clearInput();
+    }
+
+    cs.SetName(name);
+    cs.SetWorkshops(totalWorkshops, workingWorkshops);
+    cs.SetEfficiency(efficiency);
+
+    cout << "Compressor Station added successfully!\n";
+}
