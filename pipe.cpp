@@ -50,3 +50,22 @@ void Pipe::Print() const {
     cout << "Status: " << (InRepair ? "In repair" : "Working") << endl;
     cout << "Connected to CS: " << CS1 << " and " << CS2 << endl;
 }
+
+ostream& operator<<(ostream& out, const Pipe& pipe) {
+    out << pipe.id << endl;
+    out << pipe.Name << endl;
+    out << pipe.Length << endl;
+    out << pipe.Diameter << endl;
+    out << pipe.InRepair << endl;
+    out << pipe.CS1 << endl;
+    out << pipe.CS2 << endl;
+    return out;
+}
+
+istream& operator>>(istream& in, Pipe& pipe) {
+    in >> pipe.id;
+    in.ignore();
+    getline(in, pipe.Name);
+    in >> pipe.Length >> pipe.Diameter >> pipe.InRepair >> pipe.CS1 >> pipe.CS2;
+    return in;
+}
