@@ -21,3 +21,9 @@ int CompressorStation::GetPercent() {
     return (AmountOfWorkshops > 0) ? (WorkshopsInWork * 100 / AmountOfWorkshops) : 0;
 }
 
+void CompressorStation::SetName(const string& name) { Name = name; }
+void CompressorStation::SetWorkshops(int total, int working) {
+    AmountOfWorkshops = total;
+    WorkshopsInWork = working;
+}
+void CompressorStation::SetEfficiency(int efficiency) { EfficiencyLevel = efficiency; }
