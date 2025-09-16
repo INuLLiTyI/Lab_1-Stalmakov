@@ -41,3 +41,12 @@ void Pipe::Edit() {
         InRepair = (status == 1);
     }
 }
+
+void Pipe::Print() const {
+    cout << "Pipe ID: " << id << endl;
+    cout << "Name: " << Name << endl;
+    cout << "Length: " << Length << " km" << endl;
+    cout << "Diameter: " << Diameter << " mm" << endl;
+    cout << "Status: " << (InRepair ? "In repair" : "Working") << endl;
+    cout << "Connected to CS: " << CS1 << " and " << CS2 << endl;
+}
