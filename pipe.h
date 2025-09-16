@@ -19,13 +19,24 @@ public:
 	int CS1;
 	int CS2;
 
-	Pipe();
+    Pipe();
 
-	int GetId();
-	static int GetMaxId();
-	std::string GetName();
-	bool GetStatement();
-	int GetDiameter();
-	bool IsConnected();
+    // Getters
+    int GetId();
+    static int GetMaxId();
+    std::string GetName();
+    bool GetStatement();
+    int GetDiameter();
+    bool IsConnected();
 
+    void SetName(const std::string& name);
+    void SetLength(int length);
+    void SetDiameter(int diameter);
+    void SetInRepair(bool inRepair);
+    void Edit();
+    void Print() const;
+
+    // Friend functions for I/O
+    friend std::ostream& operator<<(std::ostream& out, const Pipe& pipe);
+    friend std::istream& operator>>(std::istream& in, Pipe& pipe);
 };
