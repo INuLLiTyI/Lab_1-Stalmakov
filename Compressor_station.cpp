@@ -57,3 +57,20 @@ void CompressorStation::Print() const {
     cout << "Efficiency Level: " << EfficiencyLevel << endl;
     cout << "Utilization: " << GetPercent() << "%" << endl;
 }
+
+ostream& operator<<(ostream& out, const CompressorStation& cs) {
+    out << cs.id << endl;
+    out << cs.Name << endl;
+    out << cs.AmountOfWorkshops << endl;
+    out << cs.WorkshopsInWork << endl;
+    out << cs.EfficiencyLevel << endl;
+    return out;
+}
+
+istream& operator>>(istream& in, CompressorStation& cs) {
+    in >> cs.id;
+    in.ignore();
+    getline(in, cs.Name);
+    in >> cs.AmountOfWorkshops >> cs.WorkshopsInWork >> cs.EfficiencyLevel;
+    return in;
+}
