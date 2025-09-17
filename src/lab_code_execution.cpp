@@ -15,6 +15,8 @@ void printMenu() {
     cout << "5. Edit Compressor Station\n";
     cout << "6. Save\n";
     cout << "7. Load\n";
+    cout << "8. Connect Pipe to Station\n";  
+    cout << "9. Disconnect Pipe\n";
     cout << "0. Exit\n";
     cout << "Choose option: ";
 }
@@ -85,6 +87,17 @@ void addCompressorStation(CompressorStation& cs) {
     cs.SetEfficiency(efficiency);
 
     cout << "Compressor Station added successfully!\n";
+}
+
+
+void connectPipeToStation(Pipe& pipe, CompressorStation& cs) {
+    if (cs.GetId() != 0) {
+        pipe.ConnectToStation(cs.GetId());  
+        cout << "Pipe connected to station " << cs.GetId() << endl;
+    }
+    else {
+        cout << "Create compressor station first!" << endl;
+    }
 }
 
 int main() {
@@ -177,7 +190,7 @@ int main() {
             else {
                 cout << "File data.txt not found! ";
                 cout << "Please save data first or create the file manually.\n";
-             
+
                 ofstream create_file("data.txt");
                 if (create_file) {
                     cout << "Empty data.txt created. Please save data first.\n";
@@ -185,6 +198,28 @@ int main() {
             }
             break;
         }
+
+        case 8: {
+            if (pipe.GetName() != "None" && cs.GetName() != "None") {
+                connectPipeToStation(pipe, cs);  
+            }
+            else {
+                cout << "Create pipe and station first!" << endl;
+            }
+            break;
+        }
+
+        case 9: {
+            if (pipe.IsConnected()) {
+                pipe.Disconnect();
+                cout << "Pipe disconnected from station" << endl;  
+            }
+            else {
+                cout << "Pipe is not connected to any station" << endl;  
+            }
+            break;
+        }
+
         case 0: {
             cout << "Exiting program.\n";
             return 0;

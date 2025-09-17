@@ -1,5 +1,4 @@
 #pragma once
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -8,31 +7,34 @@
 
 class Pipe {
 private:
-	static int maxId;
-	int id;
-	std::string Name;
-	int Length;
-	int Diameter;
-	bool InRepair;
+    static int maxId;
+    int id;
+    std::string Name;
+    int Length;
+    int Diameter;
+    bool InRepair;
+    int connectedStationId;  
 
 public:
-	int CS1;
-	int CS2;
-
     Pipe();
 
     // Getters
-    int GetId();
+    int GetId() const;
     static int GetMaxId();
-    std::string GetName();
-    bool GetStatement();
-    int GetDiameter();
-    bool IsConnected();
+    std::string GetName() const;
+    bool GetStatement() const;
+    int GetDiameter() const;
+    bool IsConnected() const;
+    int GetConnectedStationId() const;
 
+    // Setters
     void SetName(const std::string& name);
     void SetLength(int length);
     void SetDiameter(int diameter);
     void SetInRepair(bool inRepair);
+    void ConnectToStation(int stationId);
+    void Disconnect();
+
     void Edit();
     void Print() const;
 
