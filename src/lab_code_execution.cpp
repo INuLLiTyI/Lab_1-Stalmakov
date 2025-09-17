@@ -1,10 +1,18 @@
 #include <iostream>
 #include <fstream>
 #include <limits>
+#include <iomanip>
 #include "pipe.h"
 #include "Compressor_Station.h"
 
 using namespace std;
+
+void printMenu();
+void clearInput();
+void addPipe(Pipe& pipe);
+void addCompressorStation(CompressorStation& cs);
+void connectPipeToStation(Pipe& pipe, CompressorStation& cs);
+void clearDataFile(Pipe& pipe, CompressorStation& cs);
 
 void printMenu() {
     cout << "\n=== Pipeline Management System ===\n";
@@ -30,7 +38,8 @@ void clearInput() {
 void addPipe(Pipe& pipe) {
     cout << "\n=== Add New Pipe ===\n";
     string name;
-    int length, diameter;
+    float length;
+    int diameter;
 
     cout << "Enter pipe name: ";
     clearInput();
@@ -90,10 +99,9 @@ void addCompressorStation(CompressorStation& cs) {
     cout << "Compressor Station added successfully!\n";
 }
 
-
 void connectPipeToStation(Pipe& pipe, CompressorStation& cs) {
     if (cs.GetId() != 0) {
-        pipe.ConnectToStation(cs.GetId());  
+        pipe.ConnectToStation(cs.GetId());
         cout << "Pipe connected to station " << cs.GetId() << endl;
     }
     else {
@@ -101,7 +109,7 @@ void connectPipeToStation(Pipe& pipe, CompressorStation& cs) {
     }
 }
 
-void clearDataFile(Pipe& pipe, CompressorStation& cs) {  
+void clearDataFile(Pipe& pipe, CompressorStation& cs) {
     cout << "Are you sure you want to clear data.txt? (y/n): ";
     char confirm;
     cin >> confirm;
@@ -112,6 +120,7 @@ void clearDataFile(Pipe& pipe, CompressorStation& cs) {
             file.close();
             cout << "File data.txt cleared successfully!\n";
 
+          
             Pipe newPipe;
             CompressorStation newCS;
             pipe = newPipe;
@@ -124,15 +133,6 @@ void clearDataFile(Pipe& pipe, CompressorStation& cs) {
     }
     else {
         cout << "Operation cancelled.\n";
-    }
-}
-
-void clearDataFile() {
-    if (remove("data.txt") == 0) {
-        cout << "File data.txt deleted successfully!\n";
-    }
-    else {
-        cout << "Error deleting file or file doesn't exist!\n";
     }
 }
 
@@ -234,33 +234,29 @@ int main() {
             }
             break;
         }
-
         case 8: {
             if (pipe.GetName() != "None" && cs.GetName() != "None") {
-                connectPipeToStation(pipe, cs);  
+                connectPipeToStation(pipe, cs);
             }
             else {
                 cout << "Create pipe and station first!" << endl;
             }
             break;
         }
-
         case 9: {
             if (pipe.IsConnected()) {
                 pipe.Disconnect();
-                cout << "Pipe disconnected from station" << endl;  
+                cout << "Pipe disconnected from station" << endl;
             }
             else {
-                cout << "Pipe is not connected to any station" << endl;  
+                cout << "Pipe is not connected to any station" << endl;
             }
             break;
         }
-
         case 10: {
             clearDataFile(pipe, cs);
             break;
         }
-
         case 0: {
             cout << "Exiting program.\n";
             return 0;
