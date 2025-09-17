@@ -10,10 +10,10 @@ private:
     static int maxId;
     int id;
     std::string Name;
-    int Length;
+    float Length;
     int Diameter;
     bool InRepair;
-    int connectedStationId;  
+    int connectedStationId;
 
 public:
     Pipe();
@@ -23,13 +23,14 @@ public:
     static int GetMaxId();
     std::string GetName() const;
     bool GetStatement() const;
+    float GetLength() const;
     int GetDiameter() const;
     bool IsConnected() const;
     int GetConnectedStationId() const;
 
     // Setters
     void SetName(const std::string& name);
-    void SetLength(int length);
+    void SetLength(float length);
     void SetDiameter(int diameter);
     void SetInRepair(bool inRepair);
     void ConnectToStation(int stationId);

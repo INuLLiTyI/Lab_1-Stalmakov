@@ -1,6 +1,7 @@
 #include <cmath>
 #include "pipe.h"
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 int Pipe::maxId = 0;
@@ -9,33 +10,34 @@ Pipe::Pipe()
 {
     id = ++maxId;
     Name = "None";
-    Length = 0;
+    Length = 0.0f;
     Diameter = 0;
     InRepair = false;
-    connectedStationId = 0;  
+    connectedStationId = 0;
 }
 
 int Pipe::GetId() const { return id; }
 int Pipe::GetMaxId() { return maxId; }
 string Pipe::GetName() const { return Name; }
 bool Pipe::GetStatement() const { return InRepair; }
+float Pipe::GetLength() const { return Length; }
 int Pipe::GetDiameter() const { return Diameter; }
 bool Pipe::IsConnected() const { return connectedStationId != 0; }
 int Pipe::GetConnectedStationId() const { return connectedStationId; }
 
 void Pipe::SetName(const string& name) { Name = name; }
-void Pipe::SetLength(int length) { Length = length; }
+void Pipe::SetLength(float length) { Length = length; }
 void Pipe::SetDiameter(int diameter) { Diameter = diameter; }
 void Pipe::SetInRepair(bool inRepair) { InRepair = inRepair; }
 
 void Pipe::ConnectToStation(int stationId) {
     connectedStationId = stationId;
-    InRepair = false;  
+    InRepair = false;
 }
 
 void Pipe::Disconnect() {
     connectedStationId = 0;
-    InRepair = true;  
+    InRepair = true;
 }
 
 void Pipe::Edit() {
@@ -56,6 +58,7 @@ void Pipe::Edit() {
 void Pipe::Print() const {
     cout << "Pipe ID: " << id << endl;
     cout << "Name: " << Name << endl;
+    cout << fixed << setprecision(2);
     cout << "Length: " << Length << " km" << endl;
     cout << "Diameter: " << Diameter << " mm" << endl;
     cout << "Status: " << (InRepair ? "In repair" : "Operational") << endl;
@@ -65,10 +68,11 @@ void Pipe::Print() const {
 ostream& operator<<(ostream& out, const Pipe& pipe) {
     out << pipe.id << endl;
     out << pipe.Name << endl;
+    out << fixed << setprecision(6);
     out << pipe.Length << endl;
     out << pipe.Diameter << endl;
     out << pipe.InRepair << endl;
-    out << pipe.connectedStationId << endl;  
+    out << pipe.connectedStationId << endl;
     return out;
 }
 
