@@ -15,8 +15,9 @@ void printMenu() {
     cout << "5. Edit Compressor Station\n";
     cout << "6. Save\n";
     cout << "7. Load\n";
-    cout << "8. Connect Pipe to Station\n";  
+    cout << "8. Connect Pipe to Station\n";
     cout << "9. Disconnect Pipe\n";
+    cout << "10. Clear File\n";
     cout << "0. Exit\n";
     cout << "Choose option: ";
 }
@@ -97,6 +98,41 @@ void connectPipeToStation(Pipe& pipe, CompressorStation& cs) {
     }
     else {
         cout << "Create compressor station first!" << endl;
+    }
+}
+
+void clearDataFile(Pipe& pipe, CompressorStation& cs) {  
+    cout << "Are you sure you want to clear data.txt? (y/n): ";
+    char confirm;
+    cin >> confirm;
+
+    if (confirm == 'y' || confirm == 'Y') {
+        ofstream file("data.txt", ios::trunc);
+        if (file) {
+            file.close();
+            cout << "File data.txt cleared successfully!\n";
+
+            Pipe newPipe;
+            CompressorStation newCS;
+            pipe = newPipe;
+            cs = newCS;
+            cout << "Memory data also cleared!\n";
+        }
+        else {
+            cout << "Error clearing file!\n";
+        }
+    }
+    else {
+        cout << "Operation cancelled.\n";
+    }
+}
+
+void clearDataFile() {
+    if (remove("data.txt") == 0) {
+        cout << "File data.txt deleted successfully!\n";
+    }
+    else {
+        cout << "Error deleting file or file doesn't exist!\n";
     }
 }
 
@@ -217,6 +253,11 @@ int main() {
             else {
                 cout << "Pipe is not connected to any station" << endl;  
             }
+            break;
+        }
+
+        case 10: {
+            clearDataFile(pipe, cs);
             break;
         }
 
