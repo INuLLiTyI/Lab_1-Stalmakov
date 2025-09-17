@@ -175,12 +175,18 @@ int main() {
                 cout << "Data loaded successfully from data.txt!\n";
             }
             else {
-                cout << "Error loading data! File not found.\n";
+                cout << "File data.txt not found! ";
+                cout << "Please save data first or create the file manually.\n";
+             
+                ofstream create_file("data.txt");
+                if (create_file) {
+                    cout << "Empty data.txt created. Please save data first.\n";
+                }
             }
             break;
         }
         case 0: {
-            cout << "Exiting program. Goodbye!\n";
+            cout << "Exiting program.\n";
             return 0;
         }
         default: {
