@@ -1,4 +1,4 @@
-#include "CompressorStation.h"
+#include "Compressor_station.h"
 #include <iostream>
 
 using namespace std;
@@ -14,10 +14,11 @@ CompressorStation::CompressorStation()
     EfficiencyLevel = 0;
 }
 
-int CompressorStation::GetId() { return id; }
+
+int CompressorStation::GetId() const { return id; } 
 int CompressorStation::GetMaxId() { return maxId; }
-string CompressorStation::GetName() { return Name; }
-int CompressorStation::GetPercent() {
+string CompressorStation::GetName() const { return Name; } 
+int CompressorStation::GetPercent() const { 
     return (AmountOfWorkshops > 0) ? (WorkshopsInWork * 100 / AmountOfWorkshops) : 0;
 }
 
@@ -34,7 +35,6 @@ void CompressorStation::StartWorkshop() {
         cout << "Workshop started. Now working: " << WorkshopsInWork << "/" << AmountOfWorkshops << endl;
     }
     else {
-        // Ошибка! Все цехи уже в работе!
         cout << "All workshops are already working!\n";
     }
 }
@@ -45,7 +45,6 @@ void CompressorStation::StopWorkshop() {
         cout << "Workshop stopped. Now working: " << WorkshopsInWork << "/" << AmountOfWorkshops << endl;
     }
     else {
-        // Ошибка! Не одного цеха ни запущено
         cout << "No workshops are working!\n";
     }
 }
@@ -55,7 +54,7 @@ void CompressorStation::Print() const {
     cout << "Name: " << Name << endl;
     cout << "Workshops: " << WorkshopsInWork << "/" << AmountOfWorkshops << " working" << endl;
     cout << "Efficiency Level: " << EfficiencyLevel << endl;
-    cout << "Utilization: " << GetPercent() << "%" << endl;
+    cout << "Utilization: " << GetPercent() << "%" << endl; // Теперь будет работать
 }
 
 ostream& operator<<(ostream& out, const CompressorStation& cs) {

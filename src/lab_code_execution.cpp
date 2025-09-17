@@ -87,7 +87,7 @@ void addCompressorStation(CompressorStation& cs) {
     cout << "Compressor Station added successfully!\n";
 }
 
-int lab_code_execution() {
+int main() {
     Pipe pipe;
     CompressorStation cs;
     int choice;

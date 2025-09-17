@@ -9,21 +9,21 @@
 class CompressorStation {
 
 private:
-	static int maxId;
-	int id;
-	std::string Name;
-	int AmountOfWorkshops;
-	int WorkshopsInWork;
-	int EfficiencyLevel;
+    static int maxId;
+    int id;
+    std::string Name;
+    int AmountOfWorkshops;
+    int WorkshopsInWork;
+    int EfficiencyLevel;
 
 public:
     CompressorStation();
 
-    // Getters
-    int GetId();
+    
+    int GetId() const; 
     static int GetMaxId();
-    std::string GetName();
-    int GetPercent();
+    std::string GetName() const; 
+    int GetPercent() const; 
 
     void SetName(const std::string& name);
     void SetWorkshops(int total, int working);
